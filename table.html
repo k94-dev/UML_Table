@@ -54,6 +54,10 @@
           data.forEach((row, index) => {
             // Теперь он берёт строки с A18 по I27
             let tr = document.createElement("tr");
+ function formatNumber(value) {
+              if (!value || isNaN(value)) return "0";
+              return parseFloat(value.toFixed(3)).toString();
+            }
 
             tr.innerHTML = `
                 <td class="fc">${index + 1}</td>
@@ -61,18 +65,16 @@
                   row[0]
                 }.png)"></div></td>
                 <td class="selected"><a>${row[0]}</a></td>
-    <td class="hc">${row[7] ? parseFloat(row[7]).toFixed(0) : "0"}</td>
-    <td class="hc">${parseFloat(row[5] ?? 0).toFixed(1)}</td>
-    <td class="hc">${parseFloat(row[2] ?? 0).toFixed(1)}</td>
-    <td class="hc">${parseFloat(row[3] ?? 0).toFixed(1)}</td>
-                <td class="hc">${row[4]}</td>
-                <td class="hc">${row[6]}</td>
-                <td><b>${parseFloat(row[8] ?? 0).toFixed(
-                  0
-                )}</b><span class="grey">/${
+                <td class="hc">${formatNumber(row[7])}</td>
+                <td class="hc">${formatNumber(row[5])}</td>
+                <td class="hc">${formatNumber(row[2])}</td>
+                <td class="hc">${formatNumber(row[3])}</td>
+                <td class="hc">${formatNumber(row[4])}</td>
+                <td class="hc">${formatNumber(row[6])}</td>
+                 <td><b>${formatNumber(row[8])}</b><span class="grey">/${
               row[9] ? parseFloat(row[9]).toFixed(0) : "0"
             }</span></td>
-                <td class="lc">${parseFloat(row[1]).toFixed(3) ? row[1] : "0.0"}</td>
+                <td class="lc">${formatNumber(row[1])}</td>
             `;
 
             tableBody.appendChild(tr);
