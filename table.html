@@ -61,9 +61,7 @@
 
             tr.innerHTML = `
                 <td class="fc">${index + 1}</td>
-                <td><div class="ava" style="background-image: url(./img/${
-                  row[0]
-                }.png)"></div></td>
+                <td><div class="ava" style="background-image: url(./img/${encodeURIComponent(row[0])}.png)"></div></td>
                 <td class="selected"><a>${row[0]}</a></td>
                 <td class="hc">${formatNumber(row[7])}</td>
                 <td class="hc">${formatNumber(row[5])}</td>
