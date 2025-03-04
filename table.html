@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UML Table</title>
+    <link rel="stylesheet" href="./css/main.css" />
+  </head>
+  <body>
+    <div class="main">
+      <div class="header">
+        <img class="logo" src="./img/left.png" alt="left" />
+        <p>Перша <span class="number">UML</span> серія</p>
+        <img class="logo" src="./img/right.png" alt="right" />
+      </div>
+      <table>
+        <thead>
+          <tr class="hr">
+            <th class="fc">№</th>
+            <th>Фото</th>
+            <th>Нікнейм</th>
+            <th class="hc">ПВ</th>
+            <th class="hc">Σдб</th>
+            <th class="hc">+</th>
+            <th class="hc">-</th>
+            <th class="hc">КХ</th>
+            <th class="hc">Сі</th>
+            <th>П/І</th>
+            <th class="lc">Σ</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+         
+        </tbody>
+      </table>
+    </div>
+    <script>
+      const url =
+        "https://script.google.com/macros/s/AKfycbw0vVaP1UBQeBu4h1gBkDfUa-bRSuReL1QrjL92apZFw2rrnD6JvjNOqnstu-5RXbKL/exec"; // Замени на свою ссылку
+
+      async function loadGoogleSheet() {
+        try {
+          const response = await fetch(url);
+          const data = await response.json();
+
+          let tableBody = document.querySelector("#tableBody");
+          if (!tableBody) {
+            console.error("Ошибка: элемент #tableBody не найден.");
+            return;
+          }
+
+          tableBody.innerHTML = ""; // Очищаем перед обновлением
+
+          data.forEach((row, index) => {
+            // Теперь он берёт строки с A18 по I27
+            let tr = document.createElement("tr");
+
+            tr.innerHTML = `
+                <td class="fc">${index + 1}</td>
+                <td><div class="ava" style="background-image: url(./img/${
+                  row[0]
+                }.png)"></div></td>
+                <td class="selected"><a>${row[0]}</a></td>
+    <td class="hc">${row[7] ? parseFloat(row[7]).toFixed(0) : "0"}</td>
+    <td class="hc">${parseFloat(row[5] ?? 0).toFixed(1)}</td>
+    <td class="hc">${parseFloat(row[2] ?? 0).toFixed(1)}</td>
+    <td class="hc">${parseFloat(row[3] ?? 0).toFixed(1)}</td>
+                <td class="hc">${row[4]}</td>
+                <td class="hc">${row[6]}</td>
+                <td><b>${parseFloat(row[8] ?? 0).toFixed(
+                  0
+                )}</b><span class="grey">/${
+              row[9] ? parseFloat(row[9]).toFixed(0) : "0"
+            }</span></td>
+                <td class="lc">${row[1]}</td>
+            `;
+
+            tableBody.appendChild(tr);
+          });
+        } catch (error) {
+          console.error("Ошибка загрузки данных:", error);
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        loadGoogleSheet(); // Загружаем данные после загрузки страницы
+        setInterval(loadGoogleSheet, 30000); // Обновление каждые 30 сек
+      });
+    </script>
+  </body>
+</html>
