@@ -72,7 +72,7 @@
                 )}</b><span class="grey">/${
               row[9] ? parseFloat(row[9]).toFixed(0) : "0"
             }</span></td>
-                <td class="lc">${row[1] ? parseFloat(row[1]).toFixed(3) : "0.0"}</td>
+                <td class="lc">${parseFloat(row[1]).toFixed(3) ? row[1] : "0.0"}</td>
             `;
 
             tableBody.appendChild(tr);
