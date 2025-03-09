@@ -36,7 +36,7 @@
     </div>
     <script>
       const url =
-        "https://script.google.com/macros/s/AKfycbw0vVaP1UBQeBu4h1gBkDfUa-bRSuReL1QrjL92apZFw2rrnD6JvjNOqnstu-5RXbKL/exec"; // Замени на свою ссылку
+        "https://script.google.com/macros/s/AKfycbw0vVaP1UBQeBu4h1gBkDfUa-bRSuReL1QrjL92apZFw2rrnD6JvjNOqnstu-5RXbKL/exec";
 
       async function loadGoogleSheet() {
         try {
@@ -49,10 +49,10 @@
             return;
           }
 
-          tableBody.innerHTML = ""; // Очищаем перед обновлением
+          tableBody.innerHTML = "";
 
           data.forEach((row, index) => {
-            // Теперь он берёт строки с A18 по I27
+          
             let tr = document.createElement("tr");
  function formatNumber(value) {
               if (!value || isNaN(value)) return "0";
@@ -83,8 +83,8 @@
       }
 
       document.addEventListener("DOMContentLoaded", function () {
-        loadGoogleSheet(); // Загружаем данные после загрузки страницы
-        setInterval(loadGoogleSheet, 30000); // Обновление каждые 30 сек
+        loadGoogleSheet(); 
+        setInterval(loadGoogleSheet, 30000); 
       });
     </script>
   </body>
