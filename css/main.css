@@ -116,7 +116,7 @@ tr td:last-child {
      text-align: center;
      font-weight: 500
  }
-@media (min-width: 700px) {
+@media (min-width: 701px) {
 .main {
    padding: 10px 0 10px;
      margin: 10px auto 50px;
