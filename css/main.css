@@ -123,6 +123,7 @@ tr td:last-child {
   }
      .main {
      margin: 0px auto;
+     padding: 0;
  }
      body {
          overflow: scroll;
@@ -240,5 +241,5 @@ tr td:last-child {
  *:after {
      box-sizing: inherit;
  }
-
+//
  
