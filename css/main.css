@@ -118,7 +118,9 @@ tr td:last-child {
  }
 
  @media (max-width: 700px) {
-    
+     .main {
+     margin: 10px auto;
+ }
      body {
          overflow: scroll;
      }
