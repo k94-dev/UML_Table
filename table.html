@@ -11,7 +11,7 @@
     <div class="main">
       <div class="header">
         <img class="logo" src="./img/left.png" alt="left" />
-        <p>Друга <span class="number">UML</span> серія</p>
+        <p>Третя <span class="number">UML</span> серія</p>
         <img class="logo" src="./img/right.png" alt="right" />
       </div>
       <table>
@@ -30,14 +30,12 @@
             <th class="lc">Σ</th>
           </tr>
         </thead>
-        <tbody id="tableBody">
-         
-        </tbody>
+        <tbody id="tableBody"></tbody>
       </table>
     </div>
     <script>
       const url =
-        "https://script.google.com/macros/s/AKfycbwifm4tSrsuuRpMh9DVyGvTjDf8KcGzLGwtw8wvZeTxGuCzjUzVDzrWUDUyfyVdSzjk/exec";
+        "https://script.google.com/macros/s/AKfycbwI-vwidlewriiPEGuXmFr3mlNUjiGYfQicFPcX9mNk3dnNTwGZellMoDO5-ymP-yME/exec";
 
       async function loadGoogleSheet() {
         try {
@@ -53,16 +51,17 @@
           tableBody.innerHTML = "";
 
           data.forEach((row, index) => {
-          
             let tr = document.createElement("tr");
- function formatNumber(value) {
+            function formatNumber(value) {
               if (!value || isNaN(value)) return "0";
               return parseFloat(value.toFixed(3)).toString();
             }
 
             tr.innerHTML = `
                 <td class="fc">${index + 1}</td>
-                <td><div class="ava" style="background-image: url(./img/${encodeURIComponent(row[0])}.png)"></div></td>
+                <td><div class="ava" style="background-image: url(./img/${encodeURIComponent(
+                  row[0]
+                )}.png)"></div></td>
                 <td class="selected"><a>${row[0]}</a></td>
                 <td class="hc">${formatNumber(row[7])}</td>
                 <td class="hc">${formatNumber(row[5])}</td>
@@ -84,8 +83,8 @@
       }
 
       document.addEventListener("DOMContentLoaded", function () {
-        loadGoogleSheet(); 
-        setInterval(loadGoogleSheet, 30000); 
+        loadGoogleSheet();
+        setInterval(loadGoogleSheet, 30000);
       });
     </script>
   </body>
